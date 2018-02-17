@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {API} from '@/common/api';
 
 export default {
   name: 'Forecast',
@@ -51,12 +51,9 @@ export default {
     }
   },
   created () {
-    // TODO: Improve base config for API
-    axios.get('//api.openweathermap.org/data/2.5/forecast', {
+    API.get('forecast', {
       params: {
-          id: this.$route.params.cityId,
-          units: 'imperial',
-          APPID: '3e29e0b0c6882a3b0947e866c5289ea1'
+          id: this.$route.params.cityId
       }
     })
     .then(response => {
