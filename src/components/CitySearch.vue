@@ -42,7 +42,7 @@ export default {
         this.results = response.data
       })
       .catch(error => {
-        this.errors.push(error)
+        this.errors.push(error.message)
       });
     }
   },

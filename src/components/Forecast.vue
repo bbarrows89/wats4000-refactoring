@@ -7,7 +7,7 @@
     </p>
 
     <ul v-if="weatherData && errors.length===0" class="forecast">
-      <li v-for="forecast in weatherData.list">
+      <li v-for="forecast in weatherData.list" :key="forecast.id">
         <h3>{{ forecast.dt|formatDate }}</h3>    
           <weather-summary :weatherData="forecast.weather"> </weather-summary>
           <weather-data :weatherData="forecast.main"></weather-data>
@@ -19,7 +19,7 @@
     </div>
 
     <errors-list :errorList="errors"></errors-list>
-    
+
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
       this.weatherData = response.data
     })
     .catch(error => {
-      this.errors.push(error)
+      this.errors.push(error.message)
     });
   },
   filters: {
