@@ -20,7 +20,7 @@
       }
     },
     props: {
-      weatherData: []
+      weatherData: {}
     }
   }
 </script>
